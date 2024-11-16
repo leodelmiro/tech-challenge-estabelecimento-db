@@ -1,4 +1,4 @@
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "estabelecimento" {
   allocated_storage       = 20
   db_name                 = var.dbName
   identifier              = "estabelecimento"

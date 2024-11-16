@@ -43,9 +43,9 @@ variable "password" {
 }
 
 variable "functionName" {
-  default = "init-db"
+  default = "create-schemas"
 }
 
 variable "runtime" {
-  default = "python3.13"
+  default = "nodejs20.x"
 }
