@@ -25,7 +25,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: infra/
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ github.run_id }}
       - name: Terraform Init and Apply
         run: |
           cd infra
