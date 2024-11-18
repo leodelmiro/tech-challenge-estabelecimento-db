@@ -18,6 +18,7 @@ jobs:
         if: failure()
         run: terraform fmt -recursive infra/
       - name: Terraform Init and Validate
+        shell: bash
         run: |
           cd infra
           terraform init
