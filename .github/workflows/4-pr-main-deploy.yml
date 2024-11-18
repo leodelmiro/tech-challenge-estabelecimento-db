@@ -22,9 +22,10 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
       - name: Download Terraform Plan
-        uses: dawidd6/action-download-artifact@v6
+        uses: dawidd6/action-download-artifact@v2
         with:
           workflow: 3 - [DEVELOP] PR & Plan
+          path: ./infra
       - name: Terraform Init and Apply
         run: |
           cd infra
