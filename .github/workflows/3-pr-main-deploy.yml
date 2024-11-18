@@ -25,6 +25,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tfplan
+          path: infra/
       - name: Terraform Init and Apply
         run: |
           cd infra
