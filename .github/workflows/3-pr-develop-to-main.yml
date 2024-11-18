@@ -22,15 +22,15 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
       - name: Terraform Init and Plan
+        id: plan
         shell: bash
         run: |
           cd infra
           terraform init
-          echo 'plan<<EOF' >> $GITHUB_OUTPUT
-          terraform plan -no-color -out=tfplan >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
+          echo "plan<<EOF" >> "$GITHUB_OUTPUT"
+          terraform plan -no-color -out=tfplan >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
       - name: Publish Terraform Plan
-        id: plan
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
