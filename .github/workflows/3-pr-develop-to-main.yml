@@ -37,7 +37,7 @@ jobs:
           path: infra/tfplan
           overwrite: true
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           branch: "main"
           base: "develop"
@@ -50,3 +50,4 @@ jobs:
             ```
             
             Plan salvo no GH artifacts.
+          draft: false
