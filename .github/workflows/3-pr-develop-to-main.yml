@@ -27,7 +27,7 @@ jobs:
           terraform init
           terraform plan -out tfplan
       - name: Publish Terraform Plan
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: tfplan
           path: infra/tfplan
