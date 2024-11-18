@@ -29,6 +29,7 @@ Este repositório é referente a Infra do Database.
 - AWS
 - RDS
 - PostgresSQL
+- NodeJS (Lambda)
 
 ## Desenho Database
 
@@ -36,9 +37,10 @@ Este repositório é referente a Infra do Database.
 
 ## Estrutura do Projeto
 
+- .github: Arquivos com as actions.
 - Desenhos: Desenhos relacionados ao projeto em drawio ou PNG.
-- Scripts: Scripts para serem executados no banco.
 - Infra: Arquivos terraform para criação do banco de dados.
+  - lambda_function: Arquivos da Lambda function que cria os schemas do branco.
 
 ## Rodando o Projeto Local
 
@@ -58,6 +60,9 @@ git clone https://github.com/leodelmiro/tech-challenge-estabelecimento-db
 ```
 
 ### 3. Executar o Script de Setup
+
+- Pre-requisito:
+  - AWS Configurada
 
 O projeto inclui um script de setup (`setup.sh`) que automatiza o processo de construção e execução do projeto. O script
 realiza as seguintes operações:
