@@ -43,10 +43,9 @@ jobs:
           gh_pr_up --title "feat: Feature para Develop" --base "main" 
           --body "
             Terraform Plan:
-          
+            
             ```
             ${{ steps.plan.outputs.plan }}
             ```
-          
+            
             Plan salvo no GH artifacts.
-          "
