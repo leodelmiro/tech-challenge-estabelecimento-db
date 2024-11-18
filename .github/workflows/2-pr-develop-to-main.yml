@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
-          path: tfplan
+          path: infra/tfplan
   create_pr_main:
     runs-on: ubuntu-latest
     steps:
