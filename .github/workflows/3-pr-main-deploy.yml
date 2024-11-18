@@ -2,20 +2,26 @@ name: 3 - [MAIN] Apply & Deploy
 
 on:
   pull_request:
-    types: closed
-    branches: main
+    types:
+      - "closed"
+    branches:
+      - "main"
 
 jobs:
-  create_pr_repo_sync:
+  terraform-apply-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Create pull request
-        id: open-pr
-        uses: repo-sync/pull-request@v2
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          destination_branch: "main"
-          pr_title: "feat: Develop to Main"
-          pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
-          pr_reviewer: "leodelmiro"
-          pr_draft: true
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Terraform Init and Apply
+        run: |
+          cd infra
+          terraform init
+          terraform apply -auto-aprove plan.tfplan

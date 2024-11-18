@@ -1,4 +1,4 @@
-name: 1 - [FEAT] Open PR
+name: 1 - [FEAT] Terraform Format and Validate
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3.1.2
+        uses: hashicorp/setup-terraform@v3
       - name: Terraform Format Check
         run: terraform fmt -check -recursive infra/
       - name: Terraform Format
@@ -22,5 +22,3 @@ jobs:
           cd infra
           terraform init
           terraform validate
-
-
