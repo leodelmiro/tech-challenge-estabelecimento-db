@@ -37,17 +37,16 @@ jobs:
           path: infra/tfplan
           overwrite: true
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          branch: "main"
-          base: "develop"
-          title: "Develop para Main"
-          body: |
+        shell: bash
+        run: |
+          gh_pr_up() { gh pr create $* || gh pr edit $* }
+          gh_pr_up --title "feat: Feature para Develop" --base "main" 
+          --body "
             Terraform Plan:
-            
+          
             ```
             ${{ steps.plan.outputs.plan }}
             ```
-            
+          
             Plan salvo no GH artifacts.
-          draft: false
+          "

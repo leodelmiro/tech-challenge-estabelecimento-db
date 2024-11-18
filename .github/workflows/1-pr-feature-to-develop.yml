@@ -11,10 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          branch: "develop"
-          title: "feat: Feature para Develop"
-          body-path	: ".github/PULL_REQUEST_TEMPLATE.md"
-          draft: always-true
-          delete-branch: true
+        shell: bash
+        run: |
+          gh_pr_up() { gh pr create $* || gh pr edit $* }
+          gh_pr_up --title "feat: Feature para Develop" --template ".github/PULL_REQUEST_TEMPLATE.md" --base "develop" --draft
