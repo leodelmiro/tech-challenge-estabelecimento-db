@@ -1,4 +1,4 @@
-name: 3 - [MAIN] Apply & Deploy
+name: 4 - [MAIN] Apply & Deploy
 
 on:
   pull_request:
@@ -24,7 +24,7 @@ jobs:
       - name: Download Terraform Plan
         uses: dawidd6/action-download-artifact@v6
         with:
-          workflow: 2 - [DEVELOP] PR & Plan
+          workflow: 3 - [DEVELOP] PR & Plan
       - name: Terraform Init and Apply
         run: |
           cd infra
