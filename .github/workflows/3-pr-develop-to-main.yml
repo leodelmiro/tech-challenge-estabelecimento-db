@@ -36,18 +36,17 @@ jobs:
           name: tfplan
           path: infra/tfplan
           overwrite: true
-      - name: Create pull request
-        id: open-pr
-        uses: repo-sync/pull-request@v2
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
         with:
-          destination_branch: "main"
-          pr_title: "feat: Develop to Main"
-          pr_template: |
+          branch: "main"
+          base: "develop"
+          title: "Develop para Main"
+          body: |
             Terraform Plan:
-  
+            
             ```
             ${{ steps.plan.outputs.plan }}
             ```
-  
+            
             Plan salvo no GH artifacts.
-          pr_draft: true
