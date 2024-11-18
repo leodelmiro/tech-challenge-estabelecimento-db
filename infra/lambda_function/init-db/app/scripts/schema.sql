@@ -1,4 +1,4 @@
-CREATE TABLE tb_produto (
+CREATE TABLE IF NOT EXISTS tb_produto (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     categoria INTEGER NOT NULL,
@@ -8,16 +8,16 @@ CREATE TABLE tb_produto (
     criado_em TIMESTAMP DEFAULT current_timestamp
 );
 
-CREATE TABLE tb_imagem (
+CREATE TABLE IF NOT EXISTS tb_imagem (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
     produto_id INTEGER NOT NULL,
     url TEXT NOT NULL,
-    criado_em TIMESTAMP DEFAULT current_timestamp
-    FOREIGN KEY (produto_id) REFERENCES tb_produto(id) ON DELETE CASCADE,
+    criado_em TIMESTAMP DEFAULT current_timestamp,
+    FOREIGN KEY (produto_id) REFERENCES tb_produto(id) ON DELETE CASCADE
 );
 
-CREATE TABLE tb_cliente (
+CREATE TABLE IF NOT EXISTS tb_cliente (
     id SERIAL PRIMARY KEY,
     cpf VARCHAR(30) NOT NULL UNIQUE,
     nome VARCHAR(150) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE tb_cliente (
     criado_em TIMESTAMP DEFAULT current_timestamp
 );
 
-CREATE TABLE tb_pedido (
+CREATE TABLE IF NOT EXISTS tb_pedido (
     id SERIAL PRIMARY KEY,
     cliente_id INTEGER,
     preco_total DECIMAL(10, 2) DEFAULT 0,
@@ -37,7 +37,7 @@ CREATE TABLE tb_pedido (
     FOREIGN KEY (cliente_id) REFERENCES tb_cliente(id)
 );
 
-CREATE TABLE tb_item_pedido (
+CREATE TABLE IF NOT EXISTS tb_item_pedido (
     id SERIAL PRIMARY KEY,
     pedido_id INTEGER NOT NULL,
     produto_id INTEGER NOT NULL,
