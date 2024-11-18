@@ -24,8 +24,8 @@ jobs:
       - name: Download Terraform Plan
         uses: dawidd6/action-download-artifact@v6
         with:
-          name: tfplan
           workflow: 2 - [DEVELOP] PR & Plan
+          path: ./infra
       - name: Terraform Init and Apply
         run: |
           cd infra
