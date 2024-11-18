@@ -36,10 +36,6 @@ jobs:
           name: tfplan
           path: infra/tfplan
           overwrite: true
-  create_pr_main:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - name: Create pull request
         id: open-pr
         uses: repo-sync/pull-request@v2
