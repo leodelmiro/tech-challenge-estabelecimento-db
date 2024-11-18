@@ -17,7 +17,10 @@ jobs:
       - name: Terraform Format
         if: failure()
         run: terraform fmt -recursive infra/
-      - name: Terraform Validate
-        run: terraform validate infra/
+      - name: Terraform Init and Validate
+        run: |
+          cd infra
+          terraform init
+          terraform validate
 
 
