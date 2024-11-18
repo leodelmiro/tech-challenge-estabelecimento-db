@@ -11,7 +11,7 @@ jobs:
   terraform-apply-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Configure AWS credentials
@@ -22,9 +22,10 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
       - name: Download Terraform Plan
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v6
         with:
           name: tfplan
+          workflow: 2-pr-develop-to-main.yaml
       - name: Terraform Init and Apply
         run: |
           cd infra
