@@ -21,8 +21,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
       - name: Terraform Init and Apply
         run: |
           cd infra
           terraform init
-          terraform apply -auto-approve plan.tfplan
+          terraform apply -auto-approve tfplan
