@@ -1,4 +1,4 @@
-name: 4 - [MAIN] Apply & Deploy
+name: 3 - [MAIN] Apply & Deploy
 
 on:
   pull_request:
