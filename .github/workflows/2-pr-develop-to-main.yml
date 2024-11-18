@@ -11,7 +11,7 @@ jobs:
   terraform-plan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
       - name: Configure AWS credentials
@@ -31,6 +31,7 @@ jobs:
         with:
           name: tfplan
           path: infra/tfplan
+          overwrite: true
   create_pr_main:
     runs-on: ubuntu-latest
     steps:
