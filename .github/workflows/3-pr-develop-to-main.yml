@@ -27,9 +27,7 @@ jobs:
         run: |
           cd infra
           terraform init
-          echo "plan<<EOF" >> "$GITHUB_OUTPUT"
           terraform plan -no-color -out=tfplan >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
       - name: Publish Terraform Plan
         uses: actions/upload-artifact@v4
         with:
