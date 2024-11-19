@@ -37,6 +37,8 @@ jobs:
           path: infra/tfplan
           overwrite: true
       - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           gh_pr_up() { gh pr create "$@" || gh pr edit "$@" ; }
