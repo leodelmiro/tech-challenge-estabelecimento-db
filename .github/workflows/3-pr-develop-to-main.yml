@@ -29,8 +29,7 @@ jobs:
           cd infra
           terraform init
           terraform plan -no-color -out=tfplan
-          terraform show -no-color tfplan | tee tfplan.out
-          echo "plan=$(cat tfplan.out)" >> $GITHUB_OUTPUT
+          echo "plan=$(terraform show -no-color tfplan)" >> $GITHUB_OUTPUT
       - name: Publish Terraform Plan
         uses: actions/upload-artifact@v4
         with:
