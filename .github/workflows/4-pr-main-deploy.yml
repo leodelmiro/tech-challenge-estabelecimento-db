@@ -27,7 +27,8 @@ jobs:
           workflow: 3-pr-develop-to-main.yml
           path: ./infra
       - name: Terraform Init and Apply
+        shell: bash
         run: |
           cd infra
           terraform init
-          terraform apply -auto-approve tfplan
+          terraform apply -auto-approve tfplan/tfplan

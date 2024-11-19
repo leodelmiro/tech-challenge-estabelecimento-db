@@ -22,26 +22,33 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
       - name: Terraform Init and Plan
+        id: plan
+        shell: bash
         run: |
           cd infra
           terraform init
-          terraform plan -out tfplan
+          echo 'plan<<EOF' >> $GITHUB_OUTPUT
+          terraform plan -no-color -out=tfplan >> $GITHUB_OUTPUT
+          echo 'EOF' >> $GITHUB_OUTPUT
       - name: Publish Terraform Plan
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
           path: infra/tfplan
           overwrite: true
-  create_pr_main:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Create pull request
-        id: open-pr
-        uses: repo-sync/pull-request@v2
-        with:
-          destination_branch: "main"
-          pr_title: "feat: Develop to Main"
-          pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
-          pr_reviewer: "leodelmiro"
-          pr_draft: true
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh_pr_up() { gh pr create "$@" || gh pr edit "$@" ; }
+          gh_pr_up --title "Develop para main" --base "main" --body "$(cat <<EOF
+            Terraform Plan:
+          
+            ```
+            ${{ steps.plan.outputs.plan }}
+            ```
+
+            Plan salvo no GH artifacts.
+          EOF
+          )"
