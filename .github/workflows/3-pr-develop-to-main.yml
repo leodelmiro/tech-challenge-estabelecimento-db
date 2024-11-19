@@ -39,13 +39,14 @@ jobs:
       - name: Create Pull Request
         shell: bash
         run: |
-          gh_pr_up() { gh pr create $* || gh pr edit $* }
-          gh_pr_up --title "Develop para main" --base "main" 
-          --body "
+          gh_pr_up() { gh pr create "$@" || gh pr edit "$@" ; }
+          gh_pr_up --title "Develop para main" --base "main" --body "$(cat <<EOF
             Terraform Plan:
-            
+          
             ```
             ${{ steps.plan.outputs.plan }}
             ```
-            
-            Plan salvo no GH artifacts."
+
+            Plan salvo no GH artifacts.
+          EOF
+          )"
