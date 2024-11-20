@@ -10,6 +10,7 @@ on:
 jobs:
   terraform-plan:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged == true }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Terraform
@@ -27,8 +28,9 @@ jobs:
         run: |
           cd infra
           terraform init
+          terraform plan -no-color -out=tfplan
           echo 'plan<<EOF' >> $GITHUB_OUTPUT
-          terraform plan -no-color -out=tfplan >> $GITHUB_OUTPUT
+          terraform show -no-color tfplan >> $GITHUB_OUTPUT
           echo 'EOF' >> $GITHUB_OUTPUT
       - name: Publish Terraform Plan
         uses: actions/upload-artifact@v4
