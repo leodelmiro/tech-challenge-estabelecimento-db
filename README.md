@@ -15,13 +15,14 @@
 Aplicação se trata de um Projeto Fiap Tech Challenge - Software Architecture, simulando um projeto de um estabelecimento
 de pedidos (fast-food).
 
-Este repositório é referente a Infra do Database.
+Este repositório é referente a Infra do Database (RDS e Redis).
 
 ### Demais repositórios
 
 - https://github.com/leodelmiro/tech-challenge-estabelecimento-app
 - https://github.com/leodelmiro/tech-challenge-estabelecimento-infra
 - https://github.com/leodelmiro/tech-challenge-estabelecimento-lambda-authorizer
+- https://github.com/leodelmiro/tech-challenge-estabelecimento-gtw
 
 ## Tecnologias Utilizadas
 
