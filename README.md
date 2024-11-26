@@ -17,6 +17,8 @@ de pedidos (fast-food).
 
 Este repositório é referente a Infra do Database (RDS e Redis).
 
+Optado pelo RDS, devido contexto do projeto já bem definido, e devido ao uso do projeto pensando no contexto de um estabelecimento não é previsto uma escalabilidade astrônomica e nem uma latência absurdamente baixa. 
+
 ### Demais repositórios
 
 - https://github.com/leodelmiro/tech-challenge-estabelecimento-app
