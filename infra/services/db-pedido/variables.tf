@@ -3,7 +3,7 @@ variable "regionDefault" {
 }
 
 variable "projectName" {
-  default = "tech-fiap-db"
+  default = "tech-fiap-db-pedido"
 }
 
 variable "vpcCidr" {
