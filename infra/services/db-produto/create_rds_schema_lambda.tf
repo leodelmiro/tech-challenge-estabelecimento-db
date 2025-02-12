@@ -11,7 +11,7 @@ resource "null_resource" "install_layer_dependencies" {
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir  = "${path.cwd}/db-produto/lambda_function/init-db/app"
+  source_dir  = "${path.cwd}/services/db-produto/lambda_function/init-db/app"
   output_path = "lambda_function.zip"
   depends_on = [
     null_resource.install_layer_dependencies
