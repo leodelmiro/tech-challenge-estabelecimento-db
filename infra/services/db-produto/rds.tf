@@ -1,7 +1,7 @@
-resource "aws_db_instance" "estabelecimento" {
+resource "aws_db_instance" "produto" {
   allocated_storage       = 20
   db_name                 = var.dbName
-  identifier              = "estabelecimento"
+  identifier              = "produto"
   engine                  = "postgres"
   engine_version          = var.engineVersion
   instance_class          = var.instanceClass

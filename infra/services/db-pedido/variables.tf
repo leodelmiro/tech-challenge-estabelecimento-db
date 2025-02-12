@@ -10,16 +10,16 @@ variable "vpcCidr" {
   default = "172.31.0.0/16"
 }
 
-variable "dbName" {
-  default = "estabelecimento"
-}
-
 variable "instanceClass" {
   default = "db.t3.micro"
 }
 
 variable "engineVersion" {
   default = "17.1"
+}
+
+variable "dbName" {
+  default = "pedido"
 }
 
 variable "backupRetentionPeriod" {
@@ -43,7 +43,7 @@ variable "password" {
 }
 
 variable "functionName" {
-  default = "create-schemas"
+  default = "create-schemas-pedido"
 }
 
 variable "runtime" {
