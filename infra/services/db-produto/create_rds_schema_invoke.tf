@@ -2,7 +2,7 @@ resource "aws_lambda_invocation" "create_schemas" {
   function_name = aws_lambda_function.create_schemas.function_name
   depends_on = [
     aws_lambda_function.create_schemas,
-    aws_db_instance.estabelecimento
+    aws_db_instance.produto
   ]
 
   input = jsonencode({
