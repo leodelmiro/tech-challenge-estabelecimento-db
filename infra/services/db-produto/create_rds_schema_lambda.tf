@@ -12,14 +12,14 @@ resource "null_resource" "install_layer_dependencies" {
 data "archive_file" "lambda" {
   type        = "zip"
   source_dir  = "${path.cwd}/services/db-produto/lambda_function/init-db/app"
-  output_path = "lambda_function.zip"
+  output_path = "lambda_function_produto.zip"
   depends_on = [
     null_resource.install_layer_dependencies
   ]
 }
 
 resource "aws_lambda_function" "create_schemas" {
-  filename         = "lambda_function.zip"
+  filename         = "lambda_function_produto.zip"
   function_name    = var.functionName
   role             = data.aws_iam_role.LabRole.arn
   handler          = "app.lambdaHandler"
