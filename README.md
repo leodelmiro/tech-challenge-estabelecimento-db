@@ -15,9 +15,7 @@
 Aplicação se trata de um Projeto Fiap Tech Challenge - Software Architecture, simulando um projeto de um estabelecimento
 de pedidos (fast-food).
 
-Este repositório é referente a Infra do Database (RDS e Redis).
-
-Optado pelo RDS, devido contexto do projeto já bem definido, e devido ao uso do projeto pensando no contexto de um estabelecimento não é previsto uma escalabilidade astrônomica e nem uma latência absurdamente baixa. 
+Este repositório é referente a Infra do Database (RDS, Redis e DynamoDB).
 
 ### Demais repositórios
 
