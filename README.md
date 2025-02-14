@@ -34,7 +34,7 @@ Este repositório é referente a Infra do Database (RDS, Redis e DynamoDB).
 - RDS
 - PostgresSQL
 - DynamoDB
-- NodeJS (Lambda)
+- NodeJS (Lambda) para subida de scripts
 
 ## Estrutura do Projeto
 
