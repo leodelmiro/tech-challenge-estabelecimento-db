@@ -33,6 +33,7 @@ Este repositório é referente a Infra do Database (RDS, Redis e DynamoDB).
 - AWS
 - RDS
 - PostgresSQL
+- DynamoDB
 - NodeJS (Lambda)
 
 ## Estrutura do Projeto
